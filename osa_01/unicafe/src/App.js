@@ -21,7 +21,7 @@ const App = () => {
         texts={["good", "neutral", "bad"]}
       />
       <Header text="statistics" />
-      <Statset
+      <Statistics
         values={[good, neutral, bad]}
         texts={["good", "neutral", "bad"]}
       />
@@ -43,7 +43,7 @@ const Buttonset = ({ handleOnClicks, texts }) => {
   );
 };
 
-const Statset = ({ values, texts }) => {
+const Statistics = ({ values, texts }) => {
   const sum_value = values.reduce((a, b) => a + b);
   const grades = [1, 0, -1];
   const avg_value =
