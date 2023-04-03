@@ -44,11 +44,25 @@ const Buttonset = ({ handleOnClicks, texts }) => {
 };
 
 const Statset = ({ values, texts }) => {
+  const sum_value = values.reduce((a, b) => a + b);
+  const grades = [1, 0, -1];
+  const avg_value =
+    values
+      .map((value, index) => value * grades[index])
+      .reduce((a, b) => a + b) / sum_value;
+
   return (
     <>
       <Stat value={values[0]} text={texts[0]} />
       <Stat value={values[1]} text={texts[1]} />
       <Stat value={values[2]} text={texts[2]} />
+      <div>all {sum_value}</div>
+      <div>average {avg_value ? avg_value : "---"}</div>
+      <div>
+        positive{" "}
+        {(values[0] / sum_value) * 100 ? (values[0] / sum_value) * 100 : "---"}{" "}
+        %
+      </div>
     </>
   );
 };
