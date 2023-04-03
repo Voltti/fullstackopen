@@ -45,6 +45,8 @@ const Buttonset = ({ handleOnClicks, texts }) => {
 
 const Statistics = ({ values, texts }) => {
   const sum_value = values.reduce((a, b) => a + b);
+  if (sum_value === 0) return <div>No feedback given</div>;
+
   const grades = [1, 0, -1];
   const avg_value =
     values
@@ -57,12 +59,8 @@ const Statistics = ({ values, texts }) => {
       <Stat value={values[1]} text={texts[1]} />
       <Stat value={values[2]} text={texts[2]} />
       <div>all {sum_value}</div>
-      <div>average {avg_value ? avg_value : "---"}</div>
-      <div>
-        positive{" "}
-        {(values[0] / sum_value) * 100 ? (values[0] / sum_value) * 100 : "---"}{" "}
-        %
-      </div>
+      <div>average {avg_value}</div>
+      <div>positive {(values[0] / sum_value) * 100} %</div>
     </>
   );
 };
