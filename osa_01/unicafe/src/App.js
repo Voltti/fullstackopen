@@ -50,14 +50,25 @@ const Statistics = ({ values }) => {
       .reduce((a, b) => a + b) / sum_value;
 
   return (
-    <>
-      <StaticsLine value={values[0]} text="good" />
-      <StaticsLine value={values[1]} text="neutral" />
-      <StaticsLine value={values[2]} text="bad" />
-      <div>all {sum_value}</div>
-      <div>average {avg_value}</div>
-      <div>positive {(values[0] / sum_value) * 100} %</div>
-    </>
+    <table>
+      <tbody>
+        <StaticsLine value={values[0]} text="good" />
+        <StaticsLine value={values[1]} text="neutral" />
+        <StaticsLine value={values[2]} text="bad" />
+        <tr>
+          <td>all</td>
+          <td>{sum_value}</td>
+        </tr>
+        <tr>
+          <td>average</td>
+          <td>{avg_value}</td>
+        </tr>
+        <tr>
+          <td>positive</td>
+          <td>{(values[0] / sum_value) * 100} %</td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
@@ -67,9 +78,10 @@ const Button = ({ handleOnClick, text }) => {
 
 const StaticsLine = ({ value, text }) => {
   return (
-    <div>
-      {text} {value}
-    </div>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   );
 };
 
