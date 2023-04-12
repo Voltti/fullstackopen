@@ -52,6 +52,9 @@ const MostVotes = ({ anecdotes, points }) => {
 };
 
 const Button = ({ handleClick, text }) => {
+
+
+
   return (
     <>
       <button onClick={handleClick}>{text}</button>
