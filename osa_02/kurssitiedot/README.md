@@ -1,3 +1,3 @@
 # fullstackopen
 
-Assignments for fullstackopen.com 1.1-1.5
+Assignments for fullstackopen.com 2.1-
