@@ -5,3 +5,7 @@
 # Testing folders
 osa_01/part1
 osa_02/part2
+
+# Dev tools etc.
+.prettierrc
+.vscode/
