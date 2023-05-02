@@ -1,15 +1,16 @@
 
-const PersonsList = ({persons}) => {
+const PersonsList = ({persons, search}) => {
+    const filteredPersons = persons.filter(p => p.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
     return (
     <ul>
-        {persons.map( p => <Person key={p.id} name={p.name} />)}
+        {filteredPersons.map( p => <Person key={p.id} name={p.name} number={p.number} />)}
     </ul>
     )
 }
-const Person = ({name}) => {
+const Person = ({name, number}) => {
 
     return (
-        <li>{name}</li>
+        <li>{name} {number}</li>
     )
 }
 
