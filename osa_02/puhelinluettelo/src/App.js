@@ -11,8 +11,14 @@ const handleNameChange = (event) => setNewName(event.target.value)
 
 const addName = (event) => {
   event.preventDefault()
+ const foundperson = persons.find(obj => obj.name.toLocaleLowerCase() === newName.toLocaleLowerCase())
+  if ( foundperson !== undefined) {
+    window.alert(`${newName} is already added to phonebook ${newName === foundperson.name ? `` : `(as ${foundperson.name})` }.`)
+  }
+  else {
   setPersons(persons.concat({id: persons.length+1, name: newName}))
   setNewName('')
+  }
 }
 
   return (
