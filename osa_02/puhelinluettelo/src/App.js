@@ -17,7 +17,7 @@ const handleSearchChange = (event) => setSearchTerm(event.target.value)
 
 const addName = (event) => {
   event.preventDefault()
- const foundperson = persons.find(obj => obj.name.toLocaleLowerCase() === newName.toLocaleLowerCase())
+ const foundperson = persons.find(obj => obj.name.toLowerCase() === newName.toLowerCase())
   if ( foundperson !== undefined) {
     window.alert(`${newName} is already added to phonebook ${newName === foundperson.name ? `` : `(as ${foundperson.name})` }.`)
   }

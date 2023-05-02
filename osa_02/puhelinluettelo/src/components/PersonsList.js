@@ -1,6 +1,6 @@
 
 const PersonsList = ({persons, search}) => {
-    const filteredPersons = persons.filter(p => p.name.toLocaleLowerCase().includes(search.toLocaleLowerCase() ))
+    const filteredPersons = persons.filter(p => p.name.toLowerCase().includes(search.toLowerCase() ))
     return (
     <><h2>Numbers</h2>
     <ul>
