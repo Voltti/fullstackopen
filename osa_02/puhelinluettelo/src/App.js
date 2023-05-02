@@ -11,20 +11,20 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
 
-const handleNameChange = (event) => setNewName(event.target.value)
-const handleNumberChange = (event) => setNewNumber(event.target.value)
-const handleSearchChange = (event) => setSearchTerm(event.target.value)
+  const handleNameChange = (event) => setNewName(event.target.value)
+  const handleNumberChange = (event) => setNewNumber(event.target.value)
+  const handleSearchChange = (event) => setSearchTerm(event.target.value)
 
-const addName = (event) => {
-  event.preventDefault()
- const foundperson = persons.find(obj => obj.name.toLowerCase() === newName.toLowerCase())
-  if ( foundperson !== undefined) {
-    window.alert(`${newName} is already added to phonebook ${newName === foundperson.name ? `` : `(as ${foundperson.name})` }.`)
-  }
+  const addName = (event) => {
+    event.preventDefault()
+    const foundperson = persons.find(obj => obj.name.toLowerCase() === newName.toLowerCase())
+    if ( foundperson !== undefined) {
+      window.alert(`${newName} is already added to phonebook ${newName === foundperson.name ? `` : `(as ${foundperson.name})` }.`)
+    }
   else {
-  setPersons(persons.concat({id: persons.length+1, name: newName, number: newNumber}))
-  setNewName('')
-  setNewNumber('')
+    setPersons(persons.concat({id: persons.length+1, name: newName, number: newNumber}))
+    setNewName('')
+    setNewNumber('')
   }
 }
 
