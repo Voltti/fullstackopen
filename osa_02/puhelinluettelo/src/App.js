@@ -25,15 +25,25 @@ const App = () => {
     event.preventDefault()
     const foundperson = persons.find(obj => obj.name.toLowerCase() === newName.toLowerCase())
     if ( foundperson !== undefined) {
-      window.alert(`${newName} is already added to phonebook ${newName === foundperson.name ? `` : `(as ${foundperson.name})` }.`)
+      if (window.confirm(`${newName} is already added to phonebook${newName !== foundperson.name ? ` as ${foundperson.name}` : ''}, replace the old number with a new one?`)) {
+        foundperson.number = newNumber;
+        personsService
+          .update(foundperson)
+          .then(response => {
+            // console.log(response)
+            setPersons(persons.filter( p => p.id !== response.id ? p : response))
+            setNewName('')
+            setNewNumber('')
+          })
+      }
     }
   else {
     personsService.createNew({name: newName, number: newNumber})
       .then(response => {
         setPersons(persons.concat(response))
+        setNewName('')
+        setNewNumber('')
       })
-    setNewName('')
-    setNewNumber('')
   }
 
 }
