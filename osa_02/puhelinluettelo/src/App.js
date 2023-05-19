@@ -38,6 +38,16 @@ const App = () => {
 
 }
 
+const removeName = (name, id) => {
+  if (window.confirm(`Delete ${name}?`)) {
+    personsService
+      .remove(id)
+      .then(response => {
+        setPersons(persons.filter( p => p.id !== id))
+      })
+  }
+}
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -46,7 +56,7 @@ const App = () => {
 
       <AddNew addName={addName} newName={newName} newNumber={newNumber} handleNameChange={handleNameChange} handleNumberChange={handleNumberChange} />
 
-      <PersonsList persons={persons} search={searchTerm} />
+      <PersonsList persons={persons} search={searchTerm} removePerson={removeName}/>
     </div>
   )
 
