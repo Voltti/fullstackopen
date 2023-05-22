@@ -1,0 +1,16 @@
+.notification {
+  position: absolute;
+  z-index: 99 !important;
+  font-size: large;
+  color: forestgreen;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: #f1f1ee;
+  border: solid 1px forestgreen;
+  border-radius: 4px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 15px 60px;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
