@@ -1,4 +1,4 @@
-const CountryList = ({ countries }) => {
+const CountryList = ({ countries, handleButtonFilter }) => {
   if (countries.length > 10) {
     return <p>Too many maches, specify another filter</p>;
   } else if (countries.length === 0) {
@@ -15,7 +15,7 @@ const CountryList = ({ countries }) => {
         <h2>languages:</h2>
         <ul>
           {Object.values(country.languages).map(lang => (
-            <li>{lang}</li>
+            <li key={lang}>{lang}</li>
           ))}
         </ul>
         <div>
@@ -27,8 +27,13 @@ const CountryList = ({ countries }) => {
   return (
     <div>
       <ul>
-        {countries.map(c => (
-          <li>{c.name.common}</li>
+        {countries.map(country => (
+          <li key={country.name.common}>
+            {country.name.common}{' '}
+            <button onClick={() => handleButtonFilter(country.name.common)}>
+              show
+            </button>
+          </li>
         ))}
       </ul>
     </div>

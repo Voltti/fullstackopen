@@ -30,11 +30,18 @@ const App = () => {
     setSearch(event.target.value);
   };
 
+  const handleButtonFilter = event => {
+    handleSearchChange({ target: { value: event } });
+  };
+
   return (
     <div>
       <h2>Find countries</h2>
       <input value={search} onChange={handleSearchChange} />
-      <CountryList countries={countries} />
+      <CountryList
+        countries={countries}
+        handleButtonFilter={country => handleButtonFilter(country)}
+      />
     </div>
   );
 };
