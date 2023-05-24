@@ -5,6 +5,7 @@
 # Testing folders
 osa_01/part1
 osa_02/part2
+osa_03/part3
 
 # Dev tools etc.
 .prettierrc
