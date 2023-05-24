@@ -5,12 +5,13 @@ const CountryList = ({ countries, handleButtonFilter }) => {
     return <p>No country found, specify another filter</p>;
   } else if (countries.length === 1) {
     const country = countries[0];
+    // console.log(country);
     return (
       <div>
         <h1>{country.name.common}</h1>
         <p>
-          capital {country.capital} <br />
-          area {country.area}
+          capital: {country.capital} <br />
+          area: {country.area}
         </p>
         <h2>languages:</h2>
         <ul>
@@ -23,21 +24,21 @@ const CountryList = ({ countries, handleButtonFilter }) => {
         </div>
       </div>
     );
-  } else console.log(countries);
-  return (
-    <div>
-      <ul>
-        {countries.map(country => (
-          <li key={country.name.common}>
-            {country.name.common}{' '}
-            <button onClick={() => handleButtonFilter(country.name.common)}>
-              show
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  } else
+    return (
+      <div>
+        <ul>
+          {countries.map(country => (
+            <li key={country.name.common}>
+              {country.name.common}{' '}
+              <button onClick={() => handleButtonFilter(country.name.common)}>
+                show
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
 };
 
 export default CountryList;
