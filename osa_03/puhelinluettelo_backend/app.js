@@ -28,6 +28,15 @@ app.get('/api/persons/:id', (req, res) => {
 });
 
 app.post('/api/persons', (req, res) => {
+  if (
+    numerot.find(
+      p =>
+        p.name.trim().toLocaleLowerCase() ===
+        req.body.name.trim().toLocaleLowerCase()
+    )
+  ) {
+    res.status(406).json({ error: 'name must be unique' });
+  }
   if (req.body.name && req.body.number) {
     numerot.push({
       id: generateID(),
@@ -35,15 +44,16 @@ app.post('/api/persons', (req, res) => {
       number: req.body.number,
     });
     res.status(200).end();
-  } else res.status(400).end();
+  } else
+    res.status(400).json({ error: "Missing 'name' and/or 'number' parameter" });
 });
 
 app.delete('/api/persons/:id', (req, res) => {
   const updNumerot = numerot.filter(n => n.id !== Number(req.params.id));
   if (numerot.length - updNumerot.length === 1) {
     numerot = updNumerot;
-    res.status(204).end(`Id '${Number(req.params.id)} removed'`);
-  } else res.status(404).end(`Id '${Number(req.params.id)}' not found`);
+    res.status(204).json(`Id '${Number(req.params.id)} removed'`);
+  } else res.status(404).json(`Id '${Number(req.params.id)}' not found`);
 });
 
 const PORT = 3001;
