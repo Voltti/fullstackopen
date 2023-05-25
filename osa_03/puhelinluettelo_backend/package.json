@@ -1,0 +1,19 @@
+{
+  "name": "puhelinluettelo_backend",
+  "version": "0.0.2",
+  "description": "3 moduulin tehtäviä",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon app.js"
+  },
+  "author": "Petri Mattila",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

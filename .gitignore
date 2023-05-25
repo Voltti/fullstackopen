@@ -1,6 +1,7 @@
 
 # Dependencies
 /node_modules
+node_modules/
 
 # Testing folders
 osa_01/part1
