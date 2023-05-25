@@ -7,6 +7,10 @@ const app = express();
 
 app.use(express.json());
 
+const generateID = () => {
+  return Math.round(Math.random() * 1000000);
+};
+
 app.get('/api/persons', (req, res) => {
   res.json(numerot);
 });
@@ -21,6 +25,17 @@ app.get('/api/persons/:id', (req, res) => {
   const numero = numerot.find(n => n.id === Number(req.params.id));
   if (numero) res.json(numero);
   else res.status(404).end(`No data found with id '${req.params.id}'`);
+});
+
+app.post('/api/persons', (req, res) => {
+  if (req.body.name && req.body.number) {
+    numerot.push({
+      id: generateID(),
+      name: req.body.name,
+      number: req.body.number,
+    });
+    res.status(200).end();
+  } else res.status(400).end();
 });
 
 app.delete('/api/persons/:id', (req, res) => {
