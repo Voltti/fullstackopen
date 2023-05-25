@@ -16,6 +16,13 @@ app.get('/api/info', (req, res) => {
     ${Date()}`);
 });
 
+app.get('/api/persons/:id', (req, res) => {
+  //   console.log(req);
+  const numero = numerot.find(n => n.id === Number(req.params.id));
+  if (numero) res.json(numero);
+  else res.status(404).end(`No data found with id '${req.params.id}'`);
+});
+
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
