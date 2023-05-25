@@ -18,6 +18,7 @@ const App = () => {
     });
   }, []);
 
+  // Hakukentän toiminnallisuus
   const handleSearchChange = event => {
     let countryfilter = allCountries.filter(country =>
       country.name.common
@@ -39,19 +40,24 @@ const App = () => {
     setSearch(event.target.value);
   };
 
+  // Pikanäppäimen toiminta hakusuodattimeen
   const handleButtonFilter = event => {
     handleSearchChange({ target: { value: event } });
   };
 
+  // Säätietojen päivittäminen
   const checkWeather = countries => {
     console.log('checkweather: ', countries.length, countries[0], weather);
 
+    // Haetaan säätietoja, jos hakukentän rajauksen tuloksissa vain yksi maa
     if (countries.length === 1) {
+      // Tarkistetaan onko tarvittavat säätiedot jo haettu
       if (
         weather &&
         weather.latlng.toString() === countries[0].capitalInfo.latlng.toString()
       )
         return weather;
+      // Muuten haetaan maan säätiedot ja koostetaan niistä halutut tiedot.
       else {
         // console.log('latlng: ', countries[0].capitalInfo.latlng);
         WeatherData(countries[0].capitalInfo.latlng)
@@ -71,6 +77,7 @@ const App = () => {
     } else return null;
   };
 
+  // Sovelluksen rakenne
   return (
     <div>
       <h2>Find countries</h2>

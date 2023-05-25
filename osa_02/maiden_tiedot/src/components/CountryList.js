@@ -1,9 +1,13 @@
+// Komponentti maatietojen esittämiseen
+
 const CountryList = ({ countries, handleButtonFilter }) => {
   if (countries.length > 10) {
     return <p>Too many maches, specify another filter</p>;
   } else if (countries.length === 0) {
     return <p>No country found, specify another filter</p>;
-  } else if (countries.length === 1) {
+  }
+  // Listaa tiedot, jos vain yksi maa-tieto saatavilla
+  else if (countries.length === 1) {
     const country = countries[0];
     // console.log(country);
     return (
@@ -24,7 +28,9 @@ const CountryList = ({ countries, handleButtonFilter }) => {
         </div>
       </div>
     );
-  } else
+  }
+  // Näytä listaus maiden nimistä, jos 10 => lista > 1
+  else
     return (
       <div>
         <ul>

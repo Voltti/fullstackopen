@@ -1,5 +1,7 @@
+// Komponentti säätietojen esittämiseen
+
 const Weather = ({ weather }) => {
-  console.log('component data: ', weather);
+  // console.log('component data: ', weather);
   if (weather) {
     return (
       <>
