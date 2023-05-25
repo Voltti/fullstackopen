@@ -1,11 +1,13 @@
 'use strict';
 
 const express = require('express');
+const morgan = require('morgan');
 let numerot = require('./numerot.json');
 
 const app = express();
 
 app.use(express.json());
+app.use(morgan('tiny'));
 
 const generateID = () => {
   return Math.round(Math.random() * 1000000);
