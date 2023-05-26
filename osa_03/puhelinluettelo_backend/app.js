@@ -4,10 +4,18 @@ const express = require('express');
 const morgan = require('morgan');
 let numerot = require('./numerot.json');
 
+morgan.token('request-body', function (req, res) {
+  return JSON.stringify(req.body);
+});
+
 const app = express();
 
 app.use(express.json());
-app.use(morgan('tiny'));
+app.use(
+  morgan(
+    ':method :url :status :res[content-length] - :response-time - :request-body'
+  )
+);
 
 const generateID = () => {
   return Math.round(Math.random() * 1000000);
