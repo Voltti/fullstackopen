@@ -10,6 +10,7 @@ morgan.token('request-body', function (req, res) {
 
 const app = express();
 
+app.use(express.static('build'));
 app.use(express.json());
 app.use(
   morgan(

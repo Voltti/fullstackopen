@@ -1,0 +1,7 @@
+POST https://tehtava-3-xx.onrender.com/api/persons
+Content-Type: application/json
+
+{
+    "name": "Jaakko Hintikka",
+    "number": "0500-3336767"
+}
