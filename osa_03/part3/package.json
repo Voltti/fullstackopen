@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "build": "rm -rf build && cd ../../osa_02/part2 && npm run build && cp -r build ../../osa_03/part3",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon index.js"
   },

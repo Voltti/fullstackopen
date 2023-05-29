@@ -48,12 +48,13 @@ app.post('/api/persons', (req, res) => {
     res.status(406).json({ error: 'name must be unique' });
   }
   if (req.body.name && req.body.number) {
-    numerot.push({
+    const lisays = {
       id: generateID(),
       name: req.body.name,
       number: req.body.number,
-    });
-    res.status(200).end();
+    };
+    numerot.push(lisays);
+    res.json(lisays);
   } else
     res.status(400).json({ error: "Missing 'name' and/or 'number' parameter" });
 });
@@ -62,11 +63,11 @@ app.delete('/api/persons/:id', (req, res) => {
   const updNumerot = numerot.filter(n => n.id !== Number(req.params.id));
   if (numerot.length - updNumerot.length === 1) {
     numerot = updNumerot;
-    res.status(204).json(`Id '${Number(req.params.id)} removed'`);
+    res.status(200).json(`Id '${Number(req.params.id)} removed'`);
   } else res.status(404).json(`Id '${Number(req.params.id)}' not found`);
 });
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
